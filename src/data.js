@@ -153,6 +153,14 @@ export const TEAM = [
   },
 ]
 
+export const ASSOCIATE = {
+  name: 'M.H Baig & Co.',
+  role: 'Chartered Accountants · Associated firm',
+  logo: null,
+  text: 'A full-service chartered accountancy firm that guides businesses through every stage of growth, from incorporation and capital structuring to ongoing tax, audit and regulatory compliance. They work with Prime Associates as a strategic partner on corporate matters.',
+  focus: ['Audit & assurance', 'Financial statements', 'Corporate compliance', 'Capital structuring'],
+}
+
 export const STEPS = [
   {
     title: 'Message or call',

@@ -1,5 +1,5 @@
-import { Check, GraduationCap } from 'lucide-react'
-import { TEAM } from '../data'
+import { Calculator, Check, GraduationCap } from 'lucide-react'
+import { ASSOCIATE, TEAM } from '../data'
 import { FacebookIcon, LinkedInIcon } from './SocialIcons'
 
 const SOCIAL = {
@@ -88,6 +88,43 @@ export default function Team() {
             </article>
           ))}
         </div>
+
+        <article className="mt-8 flex flex-col gap-5 rounded-3xl border border-sky-300/20 bg-gradient-to-br from-ink-800/80 to-brand/40 p-6 sm:p-7 lg:flex-row lg:items-center lg:gap-8">
+          <div className="flex items-center gap-4 lg:w-80 lg:shrink-0">
+            {ASSOCIATE.logo ? (
+              <img
+                src={ASSOCIATE.logo}
+                alt={`${ASSOCIATE.name} logo`}
+                width="96"
+                height="96"
+                loading="lazy"
+                className="size-16 shrink-0 rounded-2xl bg-white object-contain p-2 sm:size-20"
+              />
+            ) : (
+              <span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-white text-brand shadow-lg sm:size-20">
+                <Calculator className="size-8 sm:size-9" aria-hidden="true" />
+              </span>
+            )}
+            <div className="min-w-0">
+              <h3 className="text-xl font-extrabold !text-white sm:text-2xl">{ASSOCIATE.name}</h3>
+              <p className="mt-1 text-sm font-semibold text-sky-300">{ASSOCIATE.role}</p>
+            </div>
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[15px] leading-relaxed text-slate-300">{ASSOCIATE.text}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {ASSOCIATE.focus.map((f) => (
+                <li
+                  key={f}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-slate-100"
+                >
+                  <Check className="size-3.5 text-sky-300" aria-hidden="true" />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
   )

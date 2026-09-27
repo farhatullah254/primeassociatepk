@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+
+  --color-ink-950: #0d0a26;
+  --color-ink-900: #140f38;
+  --color-ink-800: #1d1650;
+  --color-brand: #2b1a70;
+  --color-brand-600: #3a27a0;
+  --color-sky: #29a9e1;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-wa: #25d366;
+  --color-wa-700: #15803d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-slate-700 antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-ink-900 tracking-tight;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky;
+  }
+  ::selection {
+    @apply bg-sky/30 text-ink-900;
+  }
+}
+
+@utility urdu {
+  font-family: var(--font-urdu);
+  line-height: 2.25 !important;
+  direction: rtl;
+  text-align: left;
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em];
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold transition duration-200 active:scale-[0.98];
+}
+
+@utility btn-wa {
+  @apply btn bg-wa-700 text-white shadow-lg shadow-wa-700/25 hover:bg-green-800;
+}
+
+@utility btn-primary {
+  @apply btn bg-brand text-white hover:bg-brand-600;
+}
+
+@utility btn-ghost-dark {
+  @apply btn border border-white/25 bg-white/5 text-white backdrop-blur hover:bg-white/10;
+}
+
+@utility section {
+  @apply py-20 sm:py-24;
+}
+
+@utility section-title {
+  @apply text-3xl font-extrabold sm:text-4xl;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 30% 40%, #000 30%, transparent 75%);
+}
+
+@keyframes wa-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+.wa-ping {
+  animation: wa-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .wa-ping {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

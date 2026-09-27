@@ -1,0 +1,98 @@
+import { Check, GraduationCap } from 'lucide-react'
+import { TEAM, whatsappLink } from '../data'
+import WhatsAppIcon from './WhatsAppIcon'
+import { FacebookIcon, LinkedInIcon } from './SocialIcons'
+
+const SOCIAL = {
+  facebook: { Icon: FacebookIcon, label: 'Facebook', cls: 'hover:bg-[#1877F2]' },
+  linkedin: { Icon: LinkedInIcon, label: 'LinkedIn', cls: 'hover:bg-[#0A66C2]' },
+}
+
+function SocialLink({ name, type, href }) {
+  const { Icon, label, cls } = SOCIAL[type]
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${name} on ${label}`}
+      title={`${name} on ${label}`}
+      className={`grid size-11 place-items-center rounded-xl bg-white/10 text-white transition ${cls}`}
+    >
+      <Icon className="size-5" />
+    </a>
+  )
+}
+
+export default function Team() {
+  return (
+    <section id="team" className="section bg-ink-900 text-slate-200" aria-labelledby="team-title">
+      <div className="container-x">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow border-sky-300/30 bg-sky-300/10 text-sky-200">Meet the Team</p>
+          <h2 id="team-title" className="section-title mt-4 !text-white">
+            Advocates who take personal charge of your file
+          </h2>
+          <p className="mt-4 text-lg text-slate-300">
+            When you call Prime Associates, you speak directly to the lawyers who will handle your matter.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
+          {TEAM.map((m) => (
+            <article
+              key={m.name}
+              className="flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-800/60"
+            >
+              <img
+                src={m.img}
+                alt={`${m.name}, ${m.role}`}
+                width="600"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover object-top"
+              />
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 className="text-2xl font-extrabold !text-white">{m.name}</h3>
+                <p className="mt-1 font-semibold text-sky-300">{m.role}</p>
+                <ul className="mt-3 flex flex-wrap gap-2" aria-label="Credentials">
+                  {m.creds.map((c) => (
+                    <li
+                      key={c}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-slate-100"
+                    >
+                      <GraduationCap className="size-3.5" aria-hidden="true" />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-[15px] leading-relaxed text-slate-300">{m.bio}</p>
+                <ul className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-sm text-slate-200">
+                  {m.focus.map((f) => (
+                    <li key={f} className="flex items-start gap-1.5">
+                      <Check className="mt-0.5 size-4 shrink-0 text-sky-300" aria-hidden="true" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a
+                    href={whatsappLink(`Assalam o Alaikum ${m.name} sahib, I would like to discuss a matter.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-wa !py-2.5 text-sm"
+                  >
+                    <WhatsAppIcon className="size-4" />
+                    Message {m.name.split(' ')[0]}
+                  </a>
+                  {m.social && <SocialLink name={m.name} {...m.social} />}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

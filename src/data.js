@@ -13,6 +13,8 @@ import {
   Users,
 } from 'lucide-react'
 
+export const SITE_URL = 'https://primeassociatepk.com'
+
 export const CONTACT = {
   mobile: '0300-8247073',
   mobileHref: 'tel:+923008247073',

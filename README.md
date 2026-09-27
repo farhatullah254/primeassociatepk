@@ -36,11 +36,14 @@ All text lives in `src/data.js`:
 
 Tax figures in the FAQ follow the Finance Act 2026 and FBR's Withholding Tax Rate Card for Tax Year 2027. Review them after each federal budget.
 
-## After going live
+## SEO
 
-Once the domain is connected, add these to `index.html`:
+Live at **https://primeassociatepk.com/**. The domain is set in `SITE_URL` (`src/data.js`) and in the canonical and Open Graph tags in `index.html`.
 
-- `<link rel="canonical" href="https://your-domain/">`
-- an absolute `og:image` URL (`https://your-domain/og-image.jpg`)
+On every build, `scripts/prerender.js` generates:
 
-Then add the domain to Google Search Console.
+- `dist/index.html`: prerendered page with `LegalService` and `FAQPage` JSON-LD
+- `dist/sitemap.xml`: the home page with today's `lastmod`, plus image entries
+- `dist/robots.txt`: allows all crawlers and points to the sitemap
+
+Submit `https://primeassociatepk.com/sitemap.xml` in Google Search Console.

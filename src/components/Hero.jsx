@@ -1,6 +1,30 @@
-import { ArrowRight, BadgeCheck, Clock, Gavel, MapPin, Phone, Scale } from 'lucide-react'
+import { ArrowRight, CalendarCheck, Clock, FileCheck, Gavel, Landmark, LayoutGrid, MapPin, Phone, Scale } from 'lucide-react'
 import { CONTACT, whatsappLink } from '../data'
 import WhatsAppIcon from './WhatsAppIcon'
+
+const BADGES = [
+  {
+    icon: Scale,
+    title: 'FBR · Tribunals · LHC',
+    text: 'Tax representation',
+    mobile: ['Tax Litigation', 'FBR, tribunals & LHC'],
+    pos: '-left-4 top-8 lg:-left-10',
+  },
+  {
+    icon: Gavel,
+    title: 'Criminal Law',
+    text: 'Bail, trial & appeals',
+    mobile: ['Criminal Law', 'Bail, trial & appeals'],
+    pos: '-right-3 top-1/2 lg:-right-6',
+  },
+]
+
+const STATS = [
+  { icon: CalendarCheck, value: 'Since 2012', label: 'Serving Layyah & beyond' },
+  { icon: Landmark, value: 'High Court', label: 'Team of Advocates' },
+  { icon: LayoutGrid, value: '12 Services', label: 'Tax, corporate & legal' },
+  { icon: FileCheck, value: 'FBR · SECP', label: 'Plus PRA & IPO filings' },
+]
 
 const HIGHLIGHTS = ['NTN & Income Tax', 'Sales Tax & PRA', 'SECP Company', 'NGO & Trust', 'Trademark', 'Criminal Law']
 
@@ -79,52 +103,53 @@ export default function Hero() {
               width="600"
               height="720"
               fetchPriority="high"
-              className="aspect-[5/6] w-full rounded-2xl object-cover"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_28%] sm:aspect-[5/6] sm:object-center"
             />
-            <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-ink-950/85 p-4 backdrop-blur-md">
-              <p className="text-base font-bold text-white">Salman Mahmood</p>
-              <p className="text-sm text-sky-200">Tax Consultant &amp; Advocate High Court</p>
+            <div className="absolute inset-x-4 bottom-4 rounded-xl bg-ink-950/85 px-4 py-3 backdrop-blur-md sm:inset-x-5 sm:bottom-5 sm:rounded-2xl sm:p-4">
+              <p className="text-[15px] font-bold text-white sm:text-base">Salman Mahmood</p>
+              <p className="text-[13px] text-sky-200 sm:text-sm">Tax Consultant &amp; Advocate High Court</p>
             </div>
           </div>
 
-          <div className="absolute -left-4 top-8 hidden rounded-2xl bg-white p-4 text-ink-900 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-left-10">
-            <span className="grid size-10 place-items-center rounded-xl bg-sky/15 text-brand">
-              <Scale className="size-5" aria-hidden="true" />
-            </span>
-            <span>
-              <span className="block text-sm font-bold">FBR · Tribunals · LHC</span>
-              <span className="block text-xs text-slate-600">Tax representation</span>
-            </span>
-          </div>
+          <ul className="mt-3 grid grid-cols-2 gap-3 sm:hidden">
+            {BADGES.map(({ icon: Icon, mobile: [title, text] }) => (
+              <li key={title} className="flex items-start gap-2.5 rounded-xl bg-white p-3 text-ink-900 shadow-lg">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand/10 text-brand">
+                  <Icon className="size-[18px]" aria-hidden="true" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[13px] leading-tight font-bold">{title}</span>
+                  <span className="mt-0.5 block text-xs leading-tight text-slate-600">{text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
 
-          <div className="absolute -right-3 top-1/2 hidden rounded-2xl bg-white p-4 text-ink-900 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-right-6">
-            <span className="grid size-10 place-items-center rounded-xl bg-brand/10 text-brand">
-              <Gavel className="size-5" aria-hidden="true" />
-            </span>
-            <span>
-              <span className="block text-sm font-bold">Criminal Law</span>
-              <span className="block text-xs text-slate-600">Bail, trial &amp; appeals</span>
-            </span>
-          </div>
+          {BADGES.map(({ icon: Icon, title, text, pos }) => (
+            <div
+              key={title}
+              className={`absolute hidden rounded-2xl bg-white p-4 text-ink-900 shadow-xl sm:flex sm:items-center sm:gap-3 ${pos}`}
+            >
+              <span className="grid size-10 place-items-center rounded-xl bg-brand/10 text-brand">
+                <Icon className="size-5" aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block text-sm font-bold">{title}</span>
+                <span className="block text-xs text-slate-600">{text}</span>
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="container-x mt-16">
+      <div className="container-x mt-12 sm:mt-16">
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
-          {[
-            ['Since 2012', 'Serving Layyah & beyond'],
-            ['2 Advocates', 'Of the High Court on the team'],
-            ['12 services', 'Tax, corporate & legal'],
-            ['FBR · PRA · SECP', 'Registrations & returns filed'],
-          ].map(([k, v]) => (
-            <div key={k} className="bg-ink-900/80 px-5 py-6">
-              <dt className="sr-only">{v}</dt>
-              <dd>
-                <span className="flex items-center gap-2 text-xl font-extrabold text-white sm:text-2xl">
-                  <BadgeCheck className="size-5 shrink-0 text-sky-300" aria-hidden="true" />
-                  {k}
-                </span>
-                <span className="mt-1 block text-sm text-slate-300">{v}</span>
+          {STATS.map(({ icon: Icon, value, label }) => (
+            <div key={value} className="flex flex-col bg-ink-900/85 px-4 py-5 sm:px-6 sm:py-6">
+              <Icon className="size-5 text-sky-300 sm:size-6" aria-hidden="true" />
+              <dt className="order-last mt-1 text-[13px] leading-snug text-slate-300 sm:text-sm">{label}</dt>
+              <dd className="mt-3 text-lg leading-tight font-extrabold whitespace-nowrap text-white sm:text-xl lg:text-2xl">
+                {value}
               </dd>
             </div>
           ))}

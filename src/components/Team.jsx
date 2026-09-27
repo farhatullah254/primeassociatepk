@@ -1,6 +1,5 @@
 import { Check, GraduationCap } from 'lucide-react'
-import { TEAM, whatsappLink } from '../data'
-import WhatsAppIcon from './WhatsAppIcon'
+import { TEAM } from '../data'
 import { FacebookIcon, LinkedInIcon } from './SocialIcons'
 
 const SOCIAL = {
@@ -80,18 +79,11 @@ export default function Team() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <a
-                    href={whatsappLink(`Assalam o Alaikum ${m.name} sahib, I would like to discuss a matter.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-wa !py-2.5 text-sm"
-                  >
-                    <WhatsAppIcon className="size-4" />
-                    Message {m.name.split(' ')[0]}
-                  </a>
-                  {m.social && <SocialLink name={m.name} {...m.social} />}
-                </div>
+                {m.social && (
+                  <div className="mt-6">
+                    <SocialLink name={m.name} {...m.social} />
+                  </div>
+                )}
               </div>
             </article>
           ))}

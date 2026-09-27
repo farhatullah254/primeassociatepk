@@ -42,21 +42,25 @@ export default function Team() {
           {TEAM.map((m) => (
             <article
               key={m.name}
-              className="flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-800/60"
+              className="flex flex-col rounded-3xl border border-white/10 bg-ink-800/60"
             >
-              <img
-                src={m.img}
-                alt={`${m.name}, ${m.role}`}
-                width="600"
-                height="720"
-                loading="lazy"
-                decoding="async"
-                className="aspect-[4/3] w-full object-cover object-top"
-              />
               <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="text-2xl font-extrabold !text-white">{m.name}</h3>
-                <p className="mt-1 font-semibold text-sky-300">{m.role}</p>
-                <ul className="mt-3 flex flex-wrap gap-2" aria-label="Credentials">
+                <div className="flex items-center gap-4 sm:gap-5">
+                  <img
+                    src={m.img}
+                    alt={`${m.name}, ${m.role}`}
+                    width="320"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
+                    className="size-20 shrink-0 rounded-full object-cover ring-2 ring-sky-300/60 ring-offset-4 ring-offset-ink-800 sm:size-24"
+                  />
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-extrabold !text-white sm:text-2xl">{m.name}</h3>
+                    <p className="mt-1 font-semibold text-sky-300">{m.role}</p>
+                  </div>
+                </div>
+                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Credentials">
                   {m.creds.map((c) => (
                     <li
                       key={c}

@@ -131,7 +131,7 @@ export const TEAM = [
   {
     name: 'Salman Mahmood',
     role: 'Tax Consultant & Advocate High Court',
-    img: '/images/salman-mahmood.webp',
+    img: '/images/salman-mahmood-avatar.webp',
     creds: ['BS (Hons)', 'LLB', '8+ years in tax & corporate law'],
     bio: 'Salman guides businesses and individuals through complex income tax and sales tax matters. He turns the rules into a clear plan that keeps you compliant and claims every lawful saving. He has represented clients before the Federal Board of Revenue, appellate tribunals and the Lahore High Court. He also drafts and negotiates shareholder agreements and service contracts for local startups.',
     focus: ['Income & sales tax', 'FBR notices & appeals', 'SECP & corporate', 'Contracts & agreements'],
@@ -140,7 +140,7 @@ export const TEAM = [
   {
     name: 'Islah-ud-Din Dogar',
     role: 'Advocate High Court, Criminal Law',
-    img: '/images/islah-ud-din-dogar.webp',
+    img: '/images/islah-ud-din-dogar-avatar.webp',
     creds: ['Advocate High Court', '15 years in practice', 'Criminal law expert'],
     bio: 'Islah-ud-Din has 15 years of courtroom and advisory experience across civil, family, corporate and criminal law. He leads the firm’s criminal practice and represents clients from bail through trial to appeal in the High Court. At every stage, he tells clients plainly where their case stands.',
     focus: ['Bail matters', 'Trial defence', 'Appeals & revisions', 'Civil & family matters'],
